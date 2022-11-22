@@ -11,6 +11,7 @@ if face_cascade.empty():
 
 # Configurações iniciais necessárias
 clown = False
+log = False
 
 cap = cv2.VideoCapture(0)
 ds_factor = 0.5
@@ -49,14 +50,16 @@ while True:
             print('Modo palhaço ativado!')
 
             # GERAÇÃO DO LOG
-            log_text = datetime.now().strftime('[%Y-%m-%d] Modo palhaço ativado às %H:%M:%S')
-            file = open('log.txt', 'r', encoding='utf-8')
-            logs = file.readlines()
-            logs.append(log_text)
-            logs.append('\n')
-            file = open('log.txt', 'w', encoding='utf-8')
-            file.writelines(logs)
-            file.close()
+            if log == False:
+                log_text = datetime.now().strftime('[%Y-%m-%d] Modo palhaço ativado às %H:%M:%S')
+                file = open('log.txt', 'r', encoding='utf-8')
+                logs = file.readlines()
+                logs.append(log_text)
+                logs.append('\n')
+                file = open('log.txt', 'w', encoding='utf-8')
+                file.writelines(logs)
+                file.close()
+                log = True
 
             # TRANSFORMA O ALGORITMO EM MODIFICAÇÃO DE PALHAÇO
             clown = True
@@ -70,6 +73,7 @@ while True:
             cv2.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), 1)
             print('Modo blur ativado!')
             clown = False
+            log = False
             face_cascade = cv2.CascadeClassifier('trabalhoG2\haarcascade_frontalface_default.xml')
 
     # Rects da face detectada
