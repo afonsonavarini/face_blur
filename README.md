@@ -5,8 +5,8 @@
 Algoritmo aplica BLUR na face detectada para garantir privacidade. Ao apontar um objeto de cor vermelha, é ativado um Easter Egg de Modo Palhaço, registrando a data do evento. Ao apontar a cor verde, o algoritmo volta ao normal.
 
 ## Libs Utilizadas
-- OpenCV2
-- Numpy
+- OpenCV2 4.6.0.66
+- Numpy 1.23.5
 - Datetime (nativo)
 
 ## Funcionamento
